@@ -1,5 +1,5 @@
 <template>
-  <form action="https://formbold.com/s/unique_form_id" method="POST">
+  <form action="https://formbold.com/s/FORM_ID" method="POST">
     <input type="email" placeholder="Email" name="email" />
     <input type="text" placeholder="Subject" name="subject" />
     <textarea name="message" placeholder="Type your message"></textarea>
