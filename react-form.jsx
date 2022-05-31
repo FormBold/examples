@@ -22,7 +22,7 @@ export default function Forms() {
 
     axios({
       method: "POST",
-      url: "https://formbold.com/s/unique_form_id",
+      url: "https://formbold.com/s/FORM_ID",
       data: inputs,
     })
       .then((r) => {
