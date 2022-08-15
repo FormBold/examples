@@ -1,0 +1,16 @@
+// Loading reCAPTCHA script
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<form action="https://formbold.com/s/FORM_ID" method="POST">
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  // Insert reCAPTCHA site key here
+  <div class="g-recaptcha" data-sitekey="your recaptcha site key"></div>
+  <button type="submit">Send</button>
+</form>
