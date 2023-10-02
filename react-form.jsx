@@ -1,64 +1,25 @@
-import axios from "axios";
-import React, { useState } from "react";
-export default function Forms() {
-  // Input Change Handling
-  const [inputs, setInputs] = useState({
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const handleOnChange = (event) => {
-    event.persist();
-    setInputs((prev) => ({
-      ...prev,
-      [event.target.id]: event.target.value,
-    }));
-  };
+import { useForm } from "formbold-react";
 
-  // Server State Handling
+function Form() {
+  const [state, handleSubmit] = useForm("Form_ID");
 
-  const handleOnSubmit = (event) => {
-    event.preventDefault();
-
-    axios({
-      method: "POST",
-      url: "https://formbold.com/s/FORM_ID",
-      data: inputs,
-    })
-      .then((r) => {
-        console.log("hello");
-      })
-      .catch((r) => {
-        console.log("error");
-      });
-  };
+  if (state.succeeded) {
+    return <div>Form submitted successfully</div>;
+  }
 
   return (
-    <form onSubmit={handleOnSubmit}>
-      <input
-        onChange={handleOnChange}
-        value={inputs.email}
-        id="email"
-        type="email"
-        name="email"
-        placeholder="Email"
-      />
-      <input
-        onChange={handleOnChange}
-        value={inputs.subject}
-        id="subject"
-        type="text"
-        name="subject"
-        placeholder="Subject"
-      />
-      <textarea
-        onChange={handleOnChange}
-        value={inputs.message}
-        id="message"
-        name="message"
-        placeholder="Type your message"
-      />
-      <button type="submit"> Send Message </button>
-    </form>
+    <>
+      <h1>Home Page</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email Address</label>
+        <input id="email" type="email" name="email" required />
+        <textarea id="message" name="message" required />
+        <button type="submit">Submit</button>
+
+        <div>{state.error && state.error.message}</div>
+      </form>
+    </>
   );
 }
+
+export default Form;
